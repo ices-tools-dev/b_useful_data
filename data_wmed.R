@@ -106,7 +106,10 @@ sfarrow::st_write_parquet(fish_div_spatial,"data/wmed_demersal_div_spatial.parqu
 
 
 #calculate trends
-diversity_trends <- calculate_diversity_trend_new(fish_diversity, metrics = c("Richness", "shannon", "evenness", "fric", "feve", "fdis", "fdiv"))
+years <- fish_diversity$Year |> unique()
+trend_years <- years[years %%10 == 0]
+diversity_trends <- fish_diversity |> filter(Year %in% trend_years) |> calculate_diversity_trend_new(metrics = c("Richness", "shannon", "evenness", "fric", "feve", "fdis", "fdiv"))
+
 saveRDS(diversity_trends, file = "data/wmed_demersal_diversity_trends.rds")
 
 

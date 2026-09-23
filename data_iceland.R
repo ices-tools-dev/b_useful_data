@@ -218,7 +218,7 @@ write.csv(diagnostics, "data/iceland_fish_diagnostics.csv")
 
 
 # Make zipfile for github release
-zip(zipfile = "data/b_useful_data_bundle_nea", 
+zip(zipfile = "data/b_useful_data_bundle_iceland", 
     files = c("Disclaimer_B-USEFUL.txt", 
               "data/iceland_fish_diagnostics.csv",
               "boot/data/iceland/traits.csv",

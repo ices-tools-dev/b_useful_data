@@ -86,16 +86,11 @@ fish_div_spatial <-  fish_div_spatial %>%  st_join(ices_ecoregions)
 
 
 #calculate trends
-diversity_trends <- calculate_diversity_trend(fish_diversity, metrics = c("Richness", "shannon", "evenness", "fric", "feve", "fdis", "fdiv"))
+
+diversity_trends <- calculate_diversity_trend_new(fish_diversity, metrics = c("Richness", "shannon", "evenness", "fric", "feve", "fdis", "fdiv"))
 
 # Prepare grids
 grid_low_res <- fish_div_spatial %>% select(Cell, longitude, latitude) %>% unique()
-
-
-
-
-
-rm(list = ls())
 
 
 
