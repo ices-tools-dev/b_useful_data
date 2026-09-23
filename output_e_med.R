@@ -1,15 +1,15 @@
 # Output gifs and pngs
 
-ecoregions <- c("west_med")
-metrics <- c("Richness", "shannon", "evenness", "fric", "fric", "feve", "fdis", "fdiv")
+# ecoregions <- c("greater_north_sea", "west_med")
+ecoregions <- c(#"greater_north_sea",
+  "east_med")
+metrics <- c("Richness", "shannon", "evenness", "fric_pa", "fric", "feve", "fdis", "fdiv")
 
-taxon <- c("w_med" = "demersal")
-#dat <- readRDS("data/wmed_demersal_diversity.rds")
-dat <- arrow::read_parquet("data/wmed_demersal_diversity.parquet")
+taxon <- c("e_med" = "demersal")
+dat <- arrow::read_parquet("data/emed_demersal_diversity.parquet")
+load("data/map_shape.rda")
 
-yr <- unique(dat$Year)[unique(dat$Year) < 2030]
-dat <- dat |> filter(Year %in% yr)
-
+yr <- unique(dat$Year)
 plot_width <- 1300
 plot_height <- 1000
 dpi <- 144
@@ -17,7 +17,7 @@ dpi <- 144
 
 for(i in 1:length(ecoregions)){
   #ecoregion_code <- eco_code_by_name[ecoregions[i]]
-  ecoregion_code <- "w_med"
+  ecoregion_code <- "e_med"
   # zip_sf(dat = diversity[[ecoregions[i]]],
   #        directory = "data",
   #        zip_name = paste0("b_useful_data", ecoregion_code),
@@ -70,7 +70,7 @@ for(i in 1:length(ecoregions)){
     } else {
       message("Not saving ", name_of_file, " — plot creation returned NULL or not a ggplot")
     }
-    # for (k in 1:length(yr)){
+    #   for (k in 1:length(yr)){
     # 
     #   name_of_file <- paste0("output/", paste(ecoregion_code, taxon, metric_name, "status", yr[k],sep = "_"), ".png")
     # 
@@ -109,6 +109,5 @@ for(i in 1:length(ecoregions)){
     #     message("Not saving ", name_of_file, " — plot creation returned NULL or not a ggplot")
     #   }
     # }
-
   }
 }

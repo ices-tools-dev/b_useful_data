@@ -1,2 +1,2 @@
-# b_useful_dst
-Git Repo for the B-USEFUL project Decision Support Tool (RShiny)
+# b_useful_data
+Git Repo for preparing the B-USEFUL project's data for use in the RShiny Decision Support Tool
